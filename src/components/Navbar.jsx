@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Left side: Logo and Name */}
           <Link to='/' className="flex items-center">
-            <div className="text-green-500 text-2xl font-bold mr-2">🌿</div>
+            <div className="text-green-500 text-2xl font-bold mr-2">
+              <img src={logo} alt="ScholarPass" className="w-8 h-8" />
+            </div>
             <span className="text-xl font-semibold">ScholarPass</span>
           </Link>
 

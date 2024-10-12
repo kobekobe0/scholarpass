@@ -31,6 +31,17 @@ import Landing from './pages/Landing'
 import Register from './pages/Register'
 import StudentHome from './pages/StudentHome'
 import ResetPassword from './pages/ResetPassword'
+import ChangePassword from './pages/ResetPasswordItem'
+import Dashboard from './pages/student/Dashboard'
+import StudentLogs from './components/student/StudentLogs'
+import Vehicle from './components/student/StudentVehicle'
+import StudentCard from './components/student/StudentCard'
+import Student_Profile from './components/student/Student_Profile'
+import AddVehicle from './components/student/StudentAddVehicle'
+import { ChakraProvider } from '@chakra-ui/react'
+import AdminSignin from './pages/admin/Signin'
+import DashboardAdmin from './pages/admin/Dashboard'
+
 
 const router = createBrowserRouter([
   {
@@ -39,6 +50,10 @@ const router = createBrowserRouter([
     element: <Home />,
     errorElement: <Error/>,
     children:[
+      {
+        index: true,
+        element: <DashboardAdmin />,
+      },
       {
         path: 'census',
         element: <Census />,
@@ -49,7 +64,36 @@ const router = createBrowserRouter([
     path: '/student',
     element: <StudentHome />,
     errorElement: <Error/>,
-    children:[]
+    children:[
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: 'logs',
+        element: <StudentLogs />,
+      },
+      {
+        path: 'card',
+        element: <StudentCard />,
+      },
+      {
+        path: 'profile',
+        element: <Student_Profile />,
+      },
+      {
+        path: 'vehicle',
+        element: <Vehicle />,
+      },
+      {
+        path: 'add-vehicle',
+        element: <AddVehicle />,
+      }
+    ]
+  },
+  {
+    path: '/admin-signin',
+    element: <AdminSignin/>
   },
   {
     path: '/census/:id/:householdId',
@@ -73,6 +117,10 @@ const router = createBrowserRouter([
     element: <ResetPassword />
   },
   {
+    path: '/forgot-password/:id',
+    element: <ChangePassword />
+  },
+  {
     path: '/',
     element: <Landing />
   }
@@ -82,10 +130,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
-    <Toaster 
-      position='top-center'
-      reverseOrder={false}
-    />
+    <ChakraProvider>
+      <RouterProvider router={router}/>
+      <Toaster 
+        position='top-center'
+        reverseOrder={false}
+      />
+    </ChakraProvider>
   </React.StrictMode>,
 )
