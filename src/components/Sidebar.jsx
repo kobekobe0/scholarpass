@@ -56,29 +56,9 @@ function Sidebar() {
         },
     ]
 
-    const onShutdown = async () => {
-        const isConfirmed = window.confirm('Are you sure you want to shutdown?')
-        if (!isConfirmed) return
-        try{
-            const reponse = await axios.post(`${API_URL}shutdown`)
-            toast.success(reponse.data.message)
-        } catch (error) {
-            toast.error('Failed to shutdown')
-        }
-    }
-
-    const onBackup = async () => {
-        const isConfirmed = window.confirm('Are you sure you want to backup? This will take some time to finish.')
-        if (!isConfirmed) return
-        toast.loading('Backing up...')
-        try{
-            const reponse = await axios.post(`${API_URL}backup`)
-            toast.dismiss()
-            toast.success(reponse.data.message)
-        } catch (error) {
-            toast.dismiss()
-            toast.error('Failed to backup')
-        }
+    const logOut = () => {
+        localStorage.removeItem('authToken');
+        navigate('/signin');
     }
 
   return (
@@ -114,7 +94,11 @@ function Sidebar() {
           <p className='text-center text-xs'>admin</p>
         </div>
       </div>
+      <div>
+        <button className='w-full text-center hover:bg-red-500 border border-red-500 transition text-red-500 hover:text-white rounded mt-8 py-2' onClick={logOut}>Logout</button>
+      </div>
     </div>
+
   </div>
 </aside>
 
