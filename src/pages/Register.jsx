@@ -178,7 +178,16 @@ const CheckDetails = ({next, prev, details, setDetails, schedule}) => {
                     <p className="text-2xl font-bold mb-4">{details?.studentName}</p>
 
                     <label className="text-sm mb-2">Department</label>
-                    <input type="text" className="border border-gray-300 bg-gray-100 rounded-md p-2 mb-4" value={details?.department} onChange={e=>setDetails({...details, department: e.target.value})}/>
+                    <p className=" font-medium text-gray-700 mb-4">{details?.department}</p>
+
+                    <label className="text-sm mb-2">Degree</label>
+                    <p className=" font-medium text-gray-700 mb-4">{details?.degree}</p>
+                    <label className="text-sm mb-2">Section</label>
+                    <p className=" font-medium text-gray-700 mb-4">{details?.section}</p>
+                    <label className="text-sm mb-2">Year Level</label>
+                    <p className=" font-medium text-gray-700 mb-4">{details?.yearLevel}</p>
+                    <label className="text-sm mb-2">Semester</label>
+                    <p className=" font-medium text-gray-700 mb-4">{details?.SY?.semester} Semester {details?.SY?.start}-{details?.SY?.end}</p>
                 </div>
 
                 <div className="flex justify-center flex-col mt-4 overflow-x-scroll">
@@ -467,6 +476,12 @@ const RegistrationPage = () => {
             formData.append('studentNumber', details.studentNumber);
             formData.append('name', details.studentName);
             formData.append('department', details.department);
+            formData.append('degree', details.degree);
+            formData.append('section', details.section);
+            formData.append('yearLevel', details.yearLevel);
+            formData.append('start', details.SY.start);
+            formData.append('end', details.SY.end);
+            formData.append('semester', details.SY.semester);
             formData.append('schedule', JSON.stringify(schedule));
             const response = await axios.post(`${API_URL}student/create`, formData, {
                 headers: {

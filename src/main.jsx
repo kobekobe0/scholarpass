@@ -41,6 +41,10 @@ import AddVehicle from './components/student/StudentAddVehicle'
 import { ChakraProvider } from '@chakra-ui/react'
 import AdminSignin from './pages/admin/Signin'
 import DashboardAdmin from './pages/admin/Dashboard'
+import Logs from './pages/admin/Logs'
+import Cards from './pages/admin/Cards'
+import Students from './pages/admin/Students'
+import StudentID from './pages/admin/StudentID'
 
 
 const router = createBrowserRouter([
@@ -55,8 +59,20 @@ const router = createBrowserRouter([
         element: <DashboardAdmin />,
       },
       {
-        path: 'census',
-        element: <Census />,
+        path: 'student-log',
+        element: <Logs />,
+      },
+      {
+        path: 'cards',
+        element: <Cards />,
+      },
+      {
+        path: 'students',
+        element: <Students />,
+      },
+      {
+        path: 'students/:id',
+        element: <StudentID />,
       },
     ]
   },
