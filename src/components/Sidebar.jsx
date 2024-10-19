@@ -31,6 +31,18 @@ function Sidebar() {
             iconWhite: <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 15 15"><path fill="white" fillRule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h12A1.5 1.5 0 0 1 15 3.5v8a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 0 11.5zM3 6a2 2 0 1 1 4 0a2 2 0 0 1-4 0m9 0H9V5h3zm0 3H9V8h3zM5 9a2.927 2.927 0 0 0-2.618 1.618l-.33.658A.5.5 0 0 0 2.5 12h5a.5.5 0 0 0 .447-.724l-.329-.658A2.927 2.927 0 0 0 5 9" clipRule="evenodd"/></svg>
         },
         {
+            name: 'Visitors',
+            path: '/admin/visitor',
+            icon:<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 20 20"><path fill="currentColor" d="m11 7l1.44 2.16c.31.47 1.01.84 1.57.84H17V8h-3l-1.44-2.16a6 6 0 0 0-1.4-1.4l-1.32-.88a1.72 1.72 0 0 0-1.7-.04L4 6v5h2V7l2-1l-3 14h2l2.35-7.65L11 14v6h2v-8l-2.7-2.7zm1-3a2 2 0 1 0 0-4a2 2 0 0 0 0 4"/></svg>,
+            iconWhite: <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="white" fillRule="evenodd" d="M16.5 15.75a2.75 2.75 0 0 0-2.383 4.123l3.756-3.756a2.735 2.735 0 0 0-1.373-.367m2.42 1.442l-3.728 3.728a2.75 2.75 0 0 0 3.728-3.728M12.25 18.5a4.25 4.25 0 1 1 8.5 0a4.25 4.25 0 0 1-8.5 0" clipRule="evenodd"/><path fill="white" d="M16 6a4 4 0 1 1-8 0a4 4 0 0 1 8 0m-1.705 7.188A5.752 5.752 0 0 0 11.938 22C4 21.99 4 19.979 4 17.5c0-2.485 3.582-4.5 8-4.5c.798 0 1.568.066 2.295.188"/></svg>
+        },
+        {
+            name: 'Visitor QR',
+            path: '/admin/visitor-qr',
+            icon:<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 12 12"><path fill="currentColor" d="M7.915 2H8.5A1.5 1.5 0 0 1 10 3.5v6A1.5 1.5 0 0 1 8.5 11h-5A1.5 1.5 0 0 1 2 9.5v-6A1.5 1.5 0 0 1 3.5 2h.585A1.5 1.5 0 0 1 5.5 1h1a1.5 1.5 0 0 1 1.415 1M5 2.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0-.5.5M7 5a1 1 0 1 0-2 0a1 1 0 0 0 2 0M4 7.5v.003q0 .047.006.093q.006.072.032.182c.036.143.107.333.25.522c.3.402.84.7 1.712.7s1.411-.298 1.713-.7a1.46 1.46 0 0 0 .281-.704A1 1 0 0 0 8 7.503V7.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5"/></svg>,
+            iconWhite: <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><path fill="white" fillRule="evenodd" d="M16.5 15.75a2.75 2.75 0 0 0-2.383 4.123l3.756-3.756a2.735 2.735 0 0 0-1.373-.367m2.42 1.442l-3.728 3.728a2.75 2.75 0 0 0 3.728-3.728M12.25 18.5a4.25 4.25 0 1 1 8.5 0a4.25 4.25 0 0 1-8.5 0" clipRule="evenodd"/><path fill="white" d="M16 6a4 4 0 1 1-8 0a4 4 0 0 1 8 0m-1.705 7.188A5.752 5.752 0 0 0 11.938 22C4 21.99 4 19.979 4 17.5c0-2.485 3.582-4.5 8-4.5c.798 0 1.568.066 2.295.188"/></svg>
+        },
+        {
             name: 'Cards',
             path: '/admin/cards',
             icon:<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 512 512"><rect width="320" height="448" x="96" y="32" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" rx="48"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M208 80h96"/><path fill="currentColor" d="M333.48 284.51A39.65 39.65 0 0 0 304 272c-11.6 0-22.09 4.41-29.54 12.43s-11.2 19.12-10.34 31C265.83 338.91 283.72 358 304 358s38.14-19.09 39.87-42.55c.88-11.78-2.82-22.77-10.39-30.94M371.69 448H236.31a12.05 12.05 0 0 1-9.31-4.17a13 13 0 0 1-2.76-10.92c3.25-17.56 13.38-32.31 29.3-42.66C267.68 381.06 285.6 376 304 376s36.32 5.06 50.46 14.25c15.92 10.35 26.05 25.1 29.3 42.66a13 13 0 0 1-2.76 10.92a12.05 12.05 0 0 1-9.31 4.17"/></svg>,
@@ -62,45 +74,45 @@ function Sidebar() {
     }
 
   return (
-<aside className='h-screen p-4 w-64 border-r-1 border-r-gray-200 border shadow-md'>
-  <div className='h-full flex flex-col justify-between rounded-sm'>
-    {/* Top section with logo and links */}
-    <div>
-      <div className='p-2 mb-4 pb-2 flex justify-start items-center gap-2'>
-        <img src={logo} className='w-10' alt="" />
-        <span className='text-emerald-600 text-xl font-medium'>Scholarpass</span>
-      </div>
-
-      {/* Navigation links */}
-      <div>
-        {links.map((link, index) => (
-          <Link to={link.path} key={index} className='flex items-center gap-1 px-4 py-2 rounded-md hover:bg-emerald-400 hover:text-emerald-800 hover:bg-opacity-50'>
-            <div className='w-8 h-8 flex justify-center items-center'>
-              {hovering ? link.iconWhite : link.icon}
+      <aside className='h-screen p-4 w-64 border-r-1 border-r-gray-200 border shadow-md'>
+        <div className='h-full flex flex-col justify-between rounded-sm'>
+          {/* Top section with logo and links */}
+          <div>
+            <div className='p-2 mb-4 pb-2 flex justify-start items-center gap-2'>
+              <img src={logo} className='w-10' alt="" />
+              <span className='text-emerald-600 text-xl font-medium'>Scholarpass</span>
             </div>
-            <span className='font-semibold'>{link.name}</span>
-          </Link>
-        ))}
-      </div>
-    </div>
 
-    {/* Bottom section with profile */}
-    <div className='mt-4'>
-      <hr className='bg-black font-semibold border border-gray-300'/>
-      <div className='flex items-center gap-2 mt-4'>
-        <img src={logo} alt="" className='w-12 h-12 bg-gray-100 rounded-md' />
-        <div className='flex flex-col justify-start items-start'>
-          <p className='text-center font-semibold'>Administrator</p>
-          <p className='text-center text-xs'>admin</p>
+            {/* Navigation links */}
+            <div>
+              {links.map((link, index) => (
+                <Link to={link.path} key={index} className='flex items-center gap-1 px-4 py-2 rounded-md hover:bg-emerald-400 hover:text-emerald-800 hover:bg-opacity-50'>
+                  <div className='w-8 h-8 flex justify-center items-center'>
+                    {hovering ? link.iconWhite : link.icon}
+                  </div>
+                  <span className='font-semibold'>{link.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom section with profile */}
+          <div className='mt-4'>
+            <hr className='bg-black font-semibold border border-gray-300'/>
+            <div className='flex items-center gap-2 mt-4'>
+              <img src={logo} alt="" className='w-12 h-12 bg-gray-100 rounded-md' />
+              <div className='flex flex-col justify-start items-start'>
+                <p className='text-center font-semibold'>Administrator</p>
+                <p className='text-center text-xs'>admin</p>
+              </div>
+            </div>
+            <div>
+              <button className='w-full text-center hover:bg-red-500 border border-red-500 transition text-red-500 hover:text-white rounded mt-8 py-2' onClick={logOut}>Logout</button>
+            </div>
+          </div>
+
         </div>
-      </div>
-      <div>
-        <button className='w-full text-center hover:bg-red-500 border border-red-500 transition text-red-500 hover:text-white rounded mt-8 py-2' onClick={logOut}>Logout</button>
-      </div>
-    </div>
-
-  </div>
-</aside>
+      </aside>
 
   )
 }

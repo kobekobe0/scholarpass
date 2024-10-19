@@ -62,6 +62,7 @@ const useLogStore = create((set) => ({
   },
 
   clearLogs: () => {
+    console.log("clearing logs");
     set({ logs: [], totalPages: 1, totalDocs: 0, currentPage: 1, error: null });
   },
 }));

@@ -19,6 +19,11 @@ function Student_Profile() {
                     <h2 className="xl:text-3xl text-xl font-semibold text-gray-800">{user?.name}</h2>
                     <p className="text-md text-gray-600">{user?.department}</p>
                     <p className="text-md text-gray-600">{user?.studentNumber}</p>
+                    <div className='flex items-center gap-2 mt-2'>
+                        <p className="text-xs bg-green-500 text-white px-4 py-1 rounded-full">{user?.section}</p>
+                        <p className="text-xs bg-green-400 text-white px-4 py-1 rounded-full">{user?.yearLevel}</p>
+                    </div>
+                    
                 </div>
             </div>
             <div className="container mx-auto p-2 bg-white rounded-lg shadow-md h-full flex flex-col"> {/* Adjust height based on your layout */}

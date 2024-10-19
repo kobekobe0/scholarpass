@@ -20,7 +20,7 @@ function Dashboard() {
       if(user){
 
           fetchStudentStats(user._id);
-        
+          console.log(user)
       }
     }, [user]);
 
@@ -29,8 +29,21 @@ function Dashboard() {
     }, [violations, pendingCardRequest, registeredVehicles, entryLogs, loading, error]);
     return (
       <div >
-          {/* Header Section */}
+          {
+              !user?.valid && (
+                <div className='flex p-4 items-start gap-4 bg-yellow-300 text-yellow-800 rounded mb-8'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" viewBox="0 0 24 24"><path fill="currentColor" d="M4.47 21h15.06c1.54 0 2.5-1.67 1.73-3L13.73 4.99c-.77-1.33-2.69-1.33-3.46 0L2.74 18c-.77 1.33.19 3 1.73 3M12 14c-.55 0-1-.45-1-1v-2c0-.55.45-1 1-1s1 .45 1 1v2c0 .55-.45 1-1 1m1 4h-2v-2h2z"/></svg>
+                  <div className='flex flex-col'>
+                      <h1 className="text-2xl font-semibold text-yellow-800">COR is Out-of-Date</h1>
+                      <p className="text-sm text-yellow-800">Please upload your latest COR to continue using the service.</p>
+                      <p className="text-xs font-medium text-yellow-800 mt-4">Profile {'>'} Update COR {'>'} Confirm</p>
+                  </div>
+
+                </div>
+              )
+          }
           <div className="flex justify-between items-center mb-12">
+
               <div className="flex flex-col gap-2">
                   <h2 className="xl:text-3xl text-xl font-semibold text-gray-800">Welcome, <span className="font-bold">{user?.name}</span></h2>
                   <p className="text-md text-gray-600">Good to have you back! Here's an overview of your profile and activities.</p>

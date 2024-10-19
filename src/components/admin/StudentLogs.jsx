@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import useLogStore from '../../store/log.store';
 import debounce from '../../helper/debounce.js';
+import { Link } from 'react-router-dom';
 
 
 //TODO: Design and add time picker
@@ -32,9 +33,9 @@ function StudentLogs() {
     }, [limit])
 
     return (
-        <div className='shadow-md bg-white rounded flex-1 p-8'>
-            <div className='flex justify-between items-center mb-8 p-4 bg-white rounded-md'>
-                <h2 className='text-xl font-semibold text-gray-800'>Recent Student Logs</h2>
+        <div className=' rounded flex-1 p-8'>
+            <div className='flex justify-between items-center mb-4 p-4 rounded-md'>
+                <h2 className='text-lg font-semibold text-gray-800'>Recent Student Logs</h2>
                 <div className='flex items-center space-x-4'>
                     <label htmlFor="">From</label>
                     <input 
@@ -71,48 +72,80 @@ function StudentLogs() {
             </div>
 
 
-            <div className='max-h-[70vh] overflow-y-auto'>
-                <table className='min-w-full'>
-                    <thead className='sticky top-0'>
-                        <tr className='bg-gray-200'>
-                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Name</th>
-                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Department</th>
-                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Date</th>
-                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Time In</th>
-                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Time Out</th>
-                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Vehicle Model</th>
-                        </tr>
-                    </thead>
-                    {
-                        loading ? <tr><td colSpan="6" className="text-center mt-4">Loading...</td></tr> :
-                        error ? <tr><td colSpan="6" className="text-center text-red-500">{error}</td></tr> :
-                        <tbody>
-                            {logs?.map((log, index) => {
-                                const logDate = new Date(log.logDate);
-                                const formattedDate = logDate.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            <div className='h-[70vh] overflow-y-auto shadow-md bg-white p-4 rounded'>
+               <table className="min-w-full text-left">
+  <thead className="sticky top-0 bg-gray-100">
+    <tr>
+      <th className="px-4 py-3 text-sm font-medium text-gray-600">Name</th>
+      <th className="px-4 py-3 text-sm font-medium text-gray-600">Department</th>
+      <th className="px-4 py-3 text-sm font-medium text-gray-600">Date</th>
+      <th className="px-4 py-3 text-sm font-medium text-gray-600">Time In</th>
+      <th className="px-4 py-3 text-sm font-medium text-gray-600">Time Out</th>
+      <th className="px-4 py-3 text-sm font-medium text-gray-600">Vehicle Model</th>
+    </tr>
+  </thead>
+  {loading ? (
+    <tbody>
+      <tr>
+        <td colSpan="6" className="text-center mt-4">Loading...</td>
+      </tr>
+    </tbody>
+  ) : error ? (
+    <tbody>
+      <tr>
+        <td colSpan="6" className="text-center text-red-500">{error}</td>
+      </tr>
+    </tbody>
+  ) : (
+    <tbody>
+      {logs?.map((log, index) => {
+        const logDate = new Date(log.logDate);
+        const formattedDate = logDate.toLocaleString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        });
 
-                                const timeIn = new Date(log.timeIn);
-                                const formattedTimeIn = timeIn.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-                                let formattedTimeOut = "N/A";
-                                if(log.timeOut){
-                                    const timeOut = new Date(log.timeOut);
-                                    formattedTimeOut = timeOut.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-                                }
+        const timeIn = new Date(log.timeIn);
+        const formattedTimeIn = timeIn.toLocaleString("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
+        let formattedTimeOut = "N/A";
+        if (log.timeOut) {
+          const timeOut = new Date(log.timeOut);
+          formattedTimeOut = timeOut.toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
+        }
 
-                                return (
-                                    <tr key={index} className='hover:bg-gray-50 odd:bg-gray-100 border border-b-black/10 even:bg-white'>
-                                        <td className='px-4 py-2 text-gray-700'>{log.studentID.name}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{log.studentID.department}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{formattedDate}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{formattedTimeIn}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{formattedTimeOut}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{log.vehicle ? log.vehicle.model : 'Walk-in'}</td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    }
-                </table>
+        return (
+          <tr
+            key={index}
+            className="border-b last:border-none hover:bg-gray-50 odd:bg-white even:bg-gray-100"
+          >
+            <td className="px-4 py-3 text-gray-700">
+              <Link to={`/admin/students/${log.studentID._id}`}>
+                {log.studentID.name}
+              </Link>
+            </td>
+            <td className="px-4 py-3 text-gray-700">{log.studentID.department}</td>
+            <td className="px-4 py-3 text-gray-700">{formattedDate}</td>
+            <td className="px-4 py-3 text-gray-700">{formattedTimeIn}</td>
+            <td className="px-4 py-3 text-gray-700">{formattedTimeOut}</td>
+            <td className="px-4 py-3 text-gray-700">
+              {log.vehicle ? log.vehicle.model : "Walk-in"}
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  )}
+</table>
+
             </div>
         </div>
 

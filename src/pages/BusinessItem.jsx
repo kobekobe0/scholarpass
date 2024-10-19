@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom"
 import axios from "axios"
 import API_URL from "../constants/api"
 import CloseModal from "../components/business/CloseModal"
-import DeleteModal from "../components/business/DeleteModal"
 import RequestClearance from "../components/business/RequestClearance"
 import ClosedBusiness from "../components/business/ClosedBusiness"
 
@@ -154,9 +153,6 @@ const BusinessItem = () => {
                 }
                 {
                     openClose && <CloseModal setOpen={setOpenClose} handleClose={handleCloseBusiness}/>
-                }
-                {
-                    openDelete && <DeleteModal setOpen={setOpenDelete} handleDelete={handleDeleteBusiness}/>
                 }
                 {
                     openBusinessClearance && <RequestClearance business={business} title='Generate Business Clearance' setOpen={setOpenBusinessClearance}/>

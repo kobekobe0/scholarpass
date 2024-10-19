@@ -45,6 +45,11 @@ import Logs from './pages/admin/Logs'
 import Cards from './pages/admin/Cards'
 import Students from './pages/admin/Students'
 import StudentID from './pages/admin/StudentID'
+import Guards from './pages/admin/Guards'
+import Settings from './pages/admin/Settings'
+import Violation from './pages/admin/Violation'
+import CardDesign from './pages/admin/CardDesign'
+import Visitor from './pages/admin/Visitor'
 
 
 const router = createBrowserRouter([
@@ -63,8 +68,16 @@ const router = createBrowserRouter([
         element: <Logs />,
       },
       {
-        path: 'cards',
+        path: 'visitor-qr',
         element: <Cards />,
+      },
+      {
+        path: 'visitor',
+        element: <Visitor />,
+      },
+      {
+        path: 'cards',
+        element: <CardDesign />,
       },
       {
         path: 'students',
@@ -73,6 +86,18 @@ const router = createBrowserRouter([
       {
         path: 'students/:id',
         element: <StudentID />,
+      },
+      {
+        path: 'guards',
+        element: <Guards />,
+      },
+      {
+        path: 'settings',
+        element: <Settings />,
+      },
+      {
+        path: 'violations',
+        element: <Violation />,
       },
     ]
   },
@@ -112,16 +137,11 @@ const router = createBrowserRouter([
     element: <AdminSignin/>
   },
   {
-    path: '/census/:id/:householdId',
-    element: <Household />
-  },
-  {
-    path: '/census/:id/household/new',
-    element: <HouseholdNew />
-  },
-
-  {
     path: '/register',
+    element: <Register />
+  },
+  {
+    path: '/violations',
     element: <Register />
   },
   {

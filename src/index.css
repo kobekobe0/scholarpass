@@ -119,3 +119,27 @@
 
 
 
+.scrollable {
+  overflow-x: auto;
+  /* Enable horizontal scrolling */
+  scrollbar-width: thin;
+  /* For Firefox */
+}
+
+/* For WebKit browsers (Chrome, Safari) */
+.scrollable::-webkit-scrollbar {
+  height: 8px;
+  /* Adjust height as needed */
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  /* Change to your desired thumb color */
+  border-radius: 10px;
+  /* Rounded corners for the scrollbar thumb */
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Change to your desired track color */
+}
