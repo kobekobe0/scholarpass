@@ -3,6 +3,7 @@ import useStudentStore from '../../store/student.store';
 import StudentCard from '../../components/admin/StudentCard';
 import debounce from '../../helper/debounce';
 import useGuardStore from '../../store/guard.store';
+import CreateModal from '../../components/admin/guards/CreateModal';
 
 function Guards() {
     const { guards, loading, error, fetchGuards, toggleGuardActiveStatus } = useGuardStore((state) => ({
@@ -13,6 +14,8 @@ function Guards() {
         toggleGuardActiveStatus: state.toggleGuardActiveStatus,
     }));
 
+    const [ create, setCreate ] = useState(false);
+
     useEffect(() => {
         fetchGuards();
     }, []);
@@ -20,15 +23,27 @@ function Guards() {
     const handleToggle = (id, currentStatus) => {
         toggleGuardActiveStatus(id, !currentStatus);
     };
+
+    const handleCreate = async () => {}
     return (
         <div className='flex flex-col w-full'>
-            <div className='flex justify-between items-center my-8 mx-10'>
-                <h2 className='text-xl'>Guards</h2>
+            <div className='flex justify-between items-center mb-4 px-14 mt-8 rounded-md'>
+                <h2 className='text-xl font-semibold text-gray-800'>Guards</h2>
+                <div className='flex items-center gap-2'>
+                  <button onClick={()=>setCreate(true)} className='bg-emerald-600 text-white hover:bg-emerald-700 transition px-4 py-1 rounded'>Create</button>
+                </div>    
             </div>
 
-            <div className='flex overflow-y-scroll gap-8 flex-col mx-10 h-[75vh]'>
-            <div className="w-full mt-4 bg-white p-4">
+            {
+                create && (
+                    <div className='px-12'>
+                        <CreateModal setCreate={setCreate} fetchGuards={fetchGuards}/>
+                    </div>
+                )
+            }
 
+            <div className='flex overflow-y-scroll gap-8 flex-col mx-10 h-[75vh]'>
+                <div className="w-full mt-4 bg-white p-4">
                 {loading ? (
                         <p>Loading...</p>
                     ) : error ? (

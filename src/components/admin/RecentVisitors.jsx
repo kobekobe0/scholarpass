@@ -23,6 +23,7 @@ function RecentVisitors() {
                             <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Person to Visit</th>
                             <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Purpose</th>
                             <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Number</th>
+                            <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Date</th>
                             <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Time In</th>
                             <th className='px-4 py-3 text-lg font-medium text-gray-800 text-left'>Time Out</th>
                         </tr>

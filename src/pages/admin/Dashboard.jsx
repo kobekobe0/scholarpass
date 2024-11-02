@@ -20,7 +20,7 @@ function DashboardAdmin() {
         
         <div className='flex justify-between gap-4 flex-col'>
             <QuickStats/>
-                <StudentLogChart />
+            <StudentLogChart />
                     
             <RecentLogs/>
             <RecentVisitors/>

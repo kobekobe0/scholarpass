@@ -75,7 +75,7 @@ function StudentID() {
             </div>
             <div className='flex'>
                 <StudentProfile student={student} />
-                <div className='flex flex-col my-4 mx-8 w-5/6 h-[80vh] justify-start p-8 items-start bg-white shadow-md'>
+                <div className='flex flex-col mx-8 w-5/6 h-[80vh] justify-start p-8 items-start bg-white shadow-md'>
                     {/* Tabs */}
                     <div className='flex'>
                         <button onClick={() => handleTabChange('logs')} className={`border-b-2  w-32 text-center px-4 py-2 ${activeTab === 'logs' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Logs</button>

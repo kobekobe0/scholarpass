@@ -12,14 +12,13 @@ import AvailableDesigns from './visitor/AvailableDesigns';
 
 
 function CardsCollection() {
-  const [qrs, setQrs] = React.useState([])
-  const [status, setStatus] = React.useState(false)
-  const [inUse, setInUse] = React.useState(false)
-  const [create, setCreate] = React.useState(false)
-  const [confirmDelete, setConfirmDelete] = React.useState(false)
+  const [qrs, setQrs] = useState([])
+  const [status, setStatus] = useState("")
+  const [inUse, setInUse] = useState("")
+  const [create, setCreate] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectedDesign, setSelectedDesign] = useState(null)
-
   const [confirmPrint, setConfirmPrint] = useState(false)
 
   const handleSelect = (card) => {
@@ -37,12 +36,19 @@ function CardsCollection() {
     });
   };
 
-  const handleToggleValid = (cardId) => {
-    setCardData((prevCardData) =>
+  const handleToggleValid = async (cardId) => {
+    setQrs((prevCardData) =>
       prevCardData.map((card) =>
         card._id === cardId ? { ...card, valid: !card.valid } : card
       )
     );
+
+    const response = await axios.patch(`${API_URL}visitor/qr/${cardId}`,{},{
+      headers: {
+        Authorization: `${localStorage.getItem('authToken')}`
+      }
+    }); // Replace with your endpoint
+    console.log('QR updated successfully:', response.data); // Handle success response (optional)
   };
 
   const fetchQRs = async () => {

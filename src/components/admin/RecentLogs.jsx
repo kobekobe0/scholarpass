@@ -30,26 +30,26 @@ function RecentLogs() {
                         error ? <tr><td colSpan="6" className="text-center text-red-500">{error}</td></tr> :
                         <tbody>
                             {recentLogs?.map((log, index) => {
-                                const logDate = new Date(log.logDate);
+                                const logDate = new Date(log?.logDate);
                                 const formattedDate = logDate.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
-                                const timeIn = new Date(log.timeIn);
+                                const timeIn = new Date(log?.timeIn);
                                 const formattedTimeIn = timeIn.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
                                 let formattedTimeOut = "N/A";
-                                if(log.timeOut){
-                                    const timeOut = new Date(log.timeOut);
+                                if(log?.timeOut){
+                                    const timeOut = new Date(log?.timeOut);
                                     formattedTimeOut = timeOut.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
                                 }
                                 
 
                                 return (
                                     <tr key={index} className='hover:bg-gray-50'>
-                                        <td className='px-4 py-2 text-gray-700'>{log.studentID.name}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{abbrev(log.studentID.department)}</td>
+                                        <td className='px-4 py-2 text-gray-700'>{log?.studentID?.name}</td>
+                                        <td className='px-4 py-2 text-gray-700'>{abbrev(log?.studentID?.department)}</td>
                                         <td className='px-4 py-2 text-gray-700'>{formattedDate}</td>
                                         <td className='px-4 py-2 text-gray-700'>{formattedTimeIn}</td>
                                         <td className='px-4 py-2 text-gray-700'>{formattedTimeOut}</td>
-                                        <td className='px-4 py-2 text-gray-700'>{log.vehicle ? log.vehicle.model : 'Walk-in'}</td>
+                                        <td className='px-4 py-2 text-gray-700'>{log?.vehicle ? log?.vehicle.model : 'Walk-in'}</td>
                                     </tr>
                                 );
                             })}
