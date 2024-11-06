@@ -1,11 +1,25 @@
 import React, { useEffect } from 'react'
 import useStatsStore from '../../store/stats.store';
+import { useNavigate } from 'react-router-dom';
 
 function QuickStats() {
+    const navigate = useNavigate();
     const { statistics, loading, error, fetchStatisticsToday } = useStatsStore();
     useEffect(() => {
         fetchStatisticsToday();
     }, [])
+
+    const goToStudents = () => {
+        navigate('/admin/students');
+    }
+
+    const goToVehicles = () => {
+        navigate('/admin/vehicles');
+    }
+
+    const goToVisitors = () => {
+        navigate('/admin/visitor');
+    }
 
     if(loading) return <p>Loading...</p>
 
@@ -14,17 +28,17 @@ function QuickStats() {
             <div className='shadow-md p-6 bg-white rounded-lg flex-1'>
                 <h3 className='text-lg font-semibold text-gray-800'>Student Traffic</h3>
                 <p className='text-3xl font-bold text-gray-900'>{statistics?.uniqueStudents}</p>
-                <button className='mt-4 text-sm text-emerald-600 hover:underline'>View Students</button>
+                <button onClick={goToStudents} className='mt-4 text-sm text-emerald-600 hover:underline'>View Students</button>
             </div>
             <div className='shadow-md p-6 bg-white rounded-lg flex-1'>
                 <h3 className='text-lg font-semibold text-gray-800'>Vahicles Entered</h3>
                 <p className='text-3xl font-bold text-gray-900'>{statistics?.uniqueVehicles}</p>
-                <button className='mt-4 text-sm text-emerald-600 hover:underline'>View Vehicles</button>
+                <button className='mt-4 text-sm text-emerald-600 cursor-default'>Number of Vehicles Registered</button>
             </div>
             <div className='shadow-md p-6 bg-white rounded-lg flex-1'>
                 <h3 className='text-lg font-semibold text-gray-800'>Visitors</h3>
                 <p className='text-3xl font-bold text-gray-900'>{statistics?.totalVisitors}</p>
-                <button className='mt-4 text-sm text-emerald-600 hover:underline'>View Visitors</button>
+                <button onClick={goToVisitors} className='mt-4 text-sm text-emerald-600 hover:underline'>View Visitors</button>
             </div>
         </div>
   )

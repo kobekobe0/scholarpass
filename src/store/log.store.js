@@ -57,9 +57,10 @@ const useLogStore = create((set) => ({
     }
   },
 
-  setPage: (page) => {
-    set({ currentPage: page });
+  setPage: async (page) => {
+      set({ currentPage: page });
   },
+
 
   clearLogs: () => {
     console.log("clearing logs");

@@ -63,7 +63,7 @@ const StudentCard = () => {
         try {
             const response = await axios.post(`${API_URL}qr/student-card`, {
                 cardID: selectedCard._id,
-                vehicleID: selectedVehicle,
+                vehicleID: selectedVehicle || null,
                 studentID: user._id
             }, {
                 headers: {

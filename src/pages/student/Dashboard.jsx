@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import useAuth from '../../helper/useAuth'
 import useStudentStatsStore from '../../store/student.stats'
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
     const {isLoading, user} = useAuth();
+    const navigate = useNavigate()
     const {
       violations,
       pendingCardRequest,
@@ -15,6 +17,9 @@ function Dashboard() {
       clearStats
     } = useStudentStatsStore();
 
+    const handleNavigate = (path) => {
+      navigate(path)
+    }
 
     useEffect(() => {
       if(user){
@@ -59,7 +64,7 @@ function Dashboard() {
               <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                   <h3 className="text-xl font-semibold text-gray-700">Registered Vehicles</h3>
                   <p className="text-4xl font-bold text-emerald-700">{registeredVehicles?.count}</p>
-                  <button className="mt-4 text-sm text-emerald-600 hover:underline">Manage Vehicles</button>
+                  <button onClick={()=>handleNavigate('/student/vehicle')} className="mt-4 text-sm text-emerald-600 hover:underline">Manage Vehicles</button>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                   <h3 className="text-xl font-semibold text-gray-700">Pending Card Requests</h3>

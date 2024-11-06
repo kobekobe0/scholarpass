@@ -62,7 +62,7 @@ const CardTable = ({ data, selectedRows, setSelectedRows, handleSelect, handleTo
                 </Switch>
               </td>
               <td className="px-4 py-3">
-                <Link to={`admin/cards/${card._id}`}>
+                <Link to={`${card._id}`}>
                     View
                 </Link>
               </td>

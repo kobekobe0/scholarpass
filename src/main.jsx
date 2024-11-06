@@ -50,6 +50,7 @@ import Settings from './pages/admin/Settings'
 import Violation from './pages/admin/Violation'
 import CardDesign from './pages/admin/CardDesign'
 import Visitor from './pages/admin/Visitor'
+import CardHistory from './pages/admin/CardHistory'
 
 
 const router = createBrowserRouter([
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: 'visitor-qr',
         element: <Cards />,
+      },
+      {
+        path: 'visitor-qr/:id',
+        element: <CardHistory />,
       },
       {
         path: 'visitor',

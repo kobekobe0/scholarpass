@@ -9,11 +9,8 @@ const StudentLogs = () => {
     useEffect(() => {
         if(!user) return
         fetchStudentLogs(user._id); // Replace 'studentID' with the actual student ID
+        fetchStudentViolations(user._id); // Replace 'studentID' with the actual student ID
     }, [user]);
-
-    useEffect(()=> {
-        console.log(studentLogs)
-    },[studentLogs])
 
     return (
         <>
