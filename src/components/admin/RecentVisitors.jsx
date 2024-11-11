@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import useStatsStore from '../../store/stats.store';
+import { useNavigate } from 'react-router-dom';
 
 function RecentVisitors() {
+    const navigate = useNavigate()
     const { recentVisitors, loading, error, fetchRecentVisitors } = useStatsStore();
     useEffect(() => {
         fetchRecentVisitors();
@@ -10,7 +12,7 @@ function RecentVisitors() {
         <div className='shadow-md bg-white rounded flex-1 min-h-96 p-8'>
             <div className='flex items-center justify-between mb-4'>
             <h2 className='text-xl font-semibold'>Recent Visitor Logs</h2>  
-            <button className='text-emerald-700'>View Visitors</button>
+            <button className='text-emerald-700' onClick={()=>navigate('/admin/visitor')}>View Visitors</button>
             </div>
             
             <div className='max-h-64 overflow-y-auto'>

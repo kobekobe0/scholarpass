@@ -12,6 +12,8 @@ import StudentProfileVehicles from '../../components/admin/StudentProfileVehicle
 import StudentProfileSettings from '../../components/admin/StudentProfileSettings'
 import Schedule from '../../components/admin/settings/Schedule'
 import toast from 'react-hot-toast'
+import printStudentTableData from '../../helper/printWithStudent'
+import printViolationTableData from '../../helper/printViolation'
 
 function StudentID() {
     const [activeTab, setActiveTab] = React.useState('logs')
@@ -68,6 +70,14 @@ function StudentID() {
         }
     }
 
+    const handlePrintData = (table, type) => {
+        printStudentTableData(table, student, type)
+    }
+
+    const handlePrintViolation = (table, type) => {
+        printViolationTableData(table, student, type)
+    }
+
     return (
         <div className='flex flex-col w-full'>
             <div className='flex justify-between items-center my-8 mx-8'>
@@ -80,7 +90,6 @@ function StudentID() {
                     <div className='flex'>
                         <button onClick={() => handleTabChange('logs')} className={`border-b-2  w-32 text-center px-4 py-2 ${activeTab === 'logs' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Logs</button>
                         <button onClick={() => handleTabChange('violations')} className={`border-b-2 w-32 text-center px-4 py-2 ${activeTab === 'violations' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Violations</button>
-                        <button onClick={() => handleTabChange('requests')} className={`border-b-2 w-32 text-center px-4 py-2 ${activeTab === 'requests' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Requests</button>
                         <button onClick={() => handleTabChange('vehicles')} className={`border-b-2 w-32 text-center px-4 py-2 ${activeTab === 'vehicles' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Vehicles</button>
                         <button onClick={() => handleTabChange('schedule')} className={`border-b-2 w-32 text-center px-4 py-2 ${activeTab === 'schedule' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Schedule</button>
                         <button onClick={() => handleTabChange('settings')} className={`border-b-2 w-32 text-center px-4 py-2 ${activeTab === 'settings' ? 'border-emerald-700 text-emerald-700' : 'border-white'}`}>Settings</button>
@@ -89,13 +98,10 @@ function StudentID() {
                     {/* Content Area */}
                     <div className='flex-grow w-full overflow-y-scroll'>
                         {activeTab === 'logs' && (
-                            <StudentProfileLogs id={id} />
+                            <StudentProfileLogs id={id} handlePrint={handlePrintData}/>
                         )}
                         {activeTab === 'violations' && (
-                            <StudentProfileViolations id={id} />
-                        )}
-                        {activeTab === 'requests' && (
-                            <StudentProfileRequests id={id} />
+                            <StudentProfileViolations id={id} handlePrint={handlePrintViolation} />
                         )}
                         {activeTab === 'schedule' && (
                             <Schedule schedule={student?.schedule} />

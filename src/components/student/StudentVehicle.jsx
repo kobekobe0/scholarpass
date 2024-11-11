@@ -51,7 +51,7 @@ const Vehicle = () => {
                             </div>
         
                             <div className="absolute right-4 top-4 md:relative md:top-auto md:right-auto md:self-center">
-                                <VehicleDropDown />
+                                <VehicleDropDown id={vehicle._id}/>
                             </div>
                         </div>
                     ))

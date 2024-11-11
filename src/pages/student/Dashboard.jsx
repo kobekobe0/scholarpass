@@ -60,21 +60,16 @@ function Dashboard() {
           </div>
 
           {/* Overview Cards Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
               <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                   <h3 className="text-xl font-semibold text-gray-700">Registered Vehicles</h3>
                   <p className="text-4xl font-bold text-emerald-700">{registeredVehicles?.count}</p>
                   <button onClick={()=>handleNavigate('/student/vehicle')} className="mt-4 text-sm text-emerald-600 hover:underline">Manage Vehicles</button>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                  <h3 className="text-xl font-semibold text-gray-700">Pending Card Requests</h3>
-                  <p className="text-4xl font-bold text-yellow-500">{pendingCardRequest?.count}</p>
-                  <button className="mt-4 text-sm text-yellow-600 hover:underline">Check Request Status</button>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                   <h3 className="text-xl font-semibold text-gray-700">Violations</h3>
                   <p className="text-4xl font-bold text-red-500">{violations?.count}</p>
-                  <button className="mt-4 text-sm text-red-600 hover:underline">View Violations</button>
+                  <button onClick={()=>handleNavigate('/student/logs')} className="mt-4 text-sm text-red-600 hover:underline">View Violations</button>
               </div>
           </div>
 

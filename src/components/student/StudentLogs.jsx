@@ -47,7 +47,7 @@ const StudentLogs = () => {
                                     </thead>
                                     <tbody>
                                         {studentLogs.map(log => (
-                                            <tr key={log.id} className="hover:bg-gray-200">
+                                            <tr key={log._id} className="hover:bg-gray-200">
                                                 <td className="py-2 px-4 whitespace-nowrap">{new Date(log.timeIn).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
                                                 <td className="py-2 px-4 whitespace-nowrap">{new Date(log.timeIn).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}</td>
                                                 <td className="py-2 px-4 whitespace-nowrap">{log?.timeOut ? new Date(log?.timeOut).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }) : ''}</td>
@@ -73,7 +73,7 @@ const StudentLogs = () => {
                                     </thead>
                                     <tbody>
                                         {violations.map(violation => (
-                                            <tr key={violation.id} className="hover:bg-gray-200">
+                                            <tr key={violation._id} className="hover:bg-gray-200">
                                                 <td className="py-2 px-4 whitespace-nowrap">{new Date(violation.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
                                                 <td className="py-2 px-4 whitespace-nowrap">{violation.violation}</td>
                                             </tr>

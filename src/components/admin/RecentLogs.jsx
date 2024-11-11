@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import useStatsStore from '../../store/stats.store';
 import abbrev from '../../helper/abbrev';
+import { useNavigate } from 'react-router-dom';
 
 function RecentLogs() {
+    const navigate = useNavigate()
     const { recentLogs, loading, error, fetchRecentLogs } = useStatsStore();
     useEffect(() => {
         fetchRecentLogs();
@@ -12,7 +14,10 @@ function RecentLogs() {
     }, [recentLogs])
     return (
         <div className='shadow-md bg-white rounded flex-1 min-h-96 p-8'>
-            <h2 className='text-xl font-semibold mb-4'>Recent Student Logs</h2>
+            <div className='flex items-center justify-between mb-4'>
+                <h2 className='text-xl font-semibold'>Recent Stundet Logs</h2>  
+                <button className='text-emerald-700' onClick={()=>navigate('/admin/student-log')}>View Logs</button>
+            </div>
             <div className='max-h-64 overflow-y-auto'>
                 <table className='min-w-full'>
                     <thead>

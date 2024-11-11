@@ -7,6 +7,8 @@ function CreateModal({setCreate, fetchQRs}) {
     const [number, setNumber] = React.useState(0)
     const handleCreate = async () => {
         if(number <= 0) return toast.error('Number of QRs must be greater than 0')
+        if(number > 10) return toast.error('Number of QRs to be simoutlaneously created must not exceed 10')
+
         const res = await axios.post(`${API_URL}visitor/qr`, {
             number
         }, {

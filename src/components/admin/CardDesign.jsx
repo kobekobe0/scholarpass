@@ -37,13 +37,6 @@ function CardDesignList() {
             <div className='flex justify-between items-center mb-4 p-4 rounded-md'>
                 <h2 className='text-xl font-semibold text-gray-800'>Card Design</h2>
                 <div className='flex items-center gap-2'>
-                  {
-                    selectedRows.length > 0 && (
-                      <>
-                      </>
-                    )
-                  }
-
                   <button onClick={()=>setCreate(true)} className='bg-emerald-600 text-white hover:bg-emerald-700 transition px-4 py-1 rounded'>Create</button>
                 </div>    
             </div>

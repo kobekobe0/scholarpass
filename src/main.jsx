@@ -51,6 +51,9 @@ import Violation from './pages/admin/Violation'
 import CardDesign from './pages/admin/CardDesign'
 import Visitor from './pages/admin/Visitor'
 import CardHistory from './pages/admin/CardHistory'
+import EditVehicle from './components/student/StudentEditVehicle'
+import ResetPasswordAdmin from './pages/ResetPasswordAdmin'
+import ChangePasswordAdmin from './pages/ResetPasswordItemAdmin'
 
 
 const router = createBrowserRouter([
@@ -132,6 +135,10 @@ const router = createBrowserRouter([
         element: <Vehicle />,
       },
       {
+        path: 'edit-vehicle/:id',
+        element: <EditVehicle />,
+      },
+      {
         path: 'add-vehicle',
         element: <AddVehicle />,
       }
@@ -160,6 +167,14 @@ const router = createBrowserRouter([
   {
     path: '/forgot-password/:id',
     element: <ChangePassword />
+  },
+  {
+    path:'/admin-forgot-password',
+    element: <ResetPasswordAdmin />
+  },
+  {
+    path: '/admin-forgot-password/:id',
+    element: <ChangePasswordAdmin />
   },
   {
     path: '/',
