@@ -27,6 +27,7 @@ const useLogTrendsStore = create((set) => ({
       set({ logTrends: response.data, loading: false }); // Store the fetched data and set loading to false
     } catch (error) {
       set({ error: error.message || 'Failed to fetch log trends', loading: false }); // Handle error
+      console.log(error)
     }
   },
 }));

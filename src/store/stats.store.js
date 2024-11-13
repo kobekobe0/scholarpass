@@ -15,9 +15,11 @@ const useStatsStore = create((set) => ({
 
     try {
       const response = await axios.get(`${API_URL}log/statistics`);
+      console.log(response)
       set({ statistics: response.data, loading: false });
     } catch (error) {
       set({ error: error.message || 'Failed to fetch statistics', loading: false });
+      console.log(error)
     }
   },
 
