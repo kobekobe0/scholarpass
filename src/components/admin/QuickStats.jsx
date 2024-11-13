@@ -41,12 +41,12 @@ function QuickStats() {
     return (
         <div className='flex w-full flex-1 gap-4'>
             <div className='shadow-md p-6 bg-white rounded-lg flex-1'>
-                <h3 className='text-lg font-semibold text-gray-800'>Student Inside</h3>
+                <h3 className='text-lg font-semibold text-gray-800'>Student Entered Today</h3>
                 <p className='text-3xl font-bold text-gray-900'>{statistics?.uniqueStudents}</p>
                 <button onClick={goToStudents} className='mt-4 text-sm text-emerald-600 hover:underline'>View Students</button>
             </div>
             <div className='shadow-md p-6 bg-white rounded-lg flex-1'>
-                <h3 className='text-lg font-semibold text-gray-800'>Vahicles Inside</h3>
+                <h3 className='text-lg font-semibold text-gray-800'>Vehicles Inside</h3>
                 <p className='text-3xl font-bold text-gray-900'>{vehicleNumber}</p>
                 <button className='mt-4 text-sm text-emerald-600 cursor-default'>Number of Vehicles Registered</button>
             </div>
