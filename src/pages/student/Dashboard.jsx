@@ -21,6 +21,10 @@ function Dashboard() {
       navigate(path)
     }
 
+    useEffect(()=> {
+      console.log(entryLogs)
+    }, [entryLogs])
+
     useEffect(() => {
       if(user){
 
@@ -79,9 +83,6 @@ function Dashboard() {
                   <div>
                       <h3 className="text-lg xl:text-xl font-semibold text-gray-700">Recent Entry Logs</h3>
                   </div>
-                  <button className="rounded-full  text-blue-500 px-4 py-2 text-xs  transition">
-                      View Logs
-                  </button>
               </div>
               <div>
               <div className="bg-white p-6 rounded-lg shadow-lg transition hover:shadow-xl">
@@ -97,26 +98,38 @@ function Dashboard() {
                         </thead>
                         <tbody>
                           {/* Row for Orientation Day */}
-                          {entryLogs?.map((log, index) => (
-                            <tr key={index} className="border-b hover:bg-gray-50">
-                              <td className="py-4 px-4 text-sm text-gray-800">{new Date(log.timeIn).toLocaleDateString('en-GB', {
-                                  year: 'numeric',
-                                  month: '2-digit',
-                                  day: '2-digit'
-                              })}</td>
-                              <td className="py-4 px-4 text-sm text-gray-800">{new Date(log.timeIn).toLocaleTimeString('en-GB', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                  hour12: true // 24-hour format, set to true for 12-hour format
-                              })}</td>
-                              <td className="py-4 px-4 text-sm text-gray-800">{new Date(log.timeOut).toLocaleTimeString('en-GB', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                  hour12: true // 24-hour format, set to true for 12-hour format
-                              })}</td>
-                              <td className="py-4 px-4 text-sm text-gray-800">{log?.vehicle?.model ? log.vehicle.model : "Walk-in"}</td>
-                            </tr>
-                          ))}
+                          {entryLogs
+                            ?.sort((a, b) => new Date(a.timeIn) - new Date(b.timeIn))
+                            .map((log, index) => (
+                              <tr key={index} className="border-b hover:bg-gray-50">
+                                <td className="py-4 px-4 text-sm text-gray-800">
+                                  {new Date(log.timeIn).toLocaleDateString('en-GB', {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit'
+                                  })}
+                                </td>
+                                <td className="py-4 px-4 text-sm text-gray-800">
+                                  {new Date(log.timeIn).toLocaleTimeString('en-GB', {
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    hour12: true // Set to true for 12-hour format
+                                  })}
+                                </td>
+                                <td className="py-4 px-4 text-sm text-gray-800">
+                                  {log.timeOut
+                                    ? new Date(log.timeOut).toLocaleTimeString('en-GB', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: true // Set to true for 12-hour format
+                                      })
+                                    : "N/A"}
+                                </td>
+                                <td className="py-4 px-4 text-sm text-gray-800">
+                                  {log?.vehicle?.model ? log.vehicle.model : "Walk-in"}
+                                </td>
+                              </tr>
+                            ))}
                         </tbody>
                       </table>
                     </div>

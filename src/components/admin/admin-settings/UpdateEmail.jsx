@@ -104,7 +104,7 @@ function UpdateEmail({configDetails}) {
                     </div> 
                     <div className='flex items-center justify-end gap-4 mt-4 w-full'>
                         {
-                            !save && <button onClick={()=>setSave(true)} className='bg-emerald-600 hover:bg-emerald-700 transition text-white w-1/12 px-2 py-2 rounded text-xs'>Save Password</button>
+                            !save && <button onClick={()=>setSave(true)} className='bg-emerald-600 hover:bg-emerald-700 transition text-white w-1/12 px-2 py-2 rounded text-xs'>Save Email</button>
                         }
                     </div>
                 </div>
