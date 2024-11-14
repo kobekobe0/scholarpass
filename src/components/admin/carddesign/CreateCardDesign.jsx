@@ -17,6 +17,7 @@ function CreateCardDesign({ create, setCreate, fetchCards }) {
     };
 
     const handleCreate = async () => {
+        toast.loading("Creating card desgin")
         if(!name) return toast.error('Name is required');
         if(!files[0]) return toast.error('Display image is required');
         if(!files[1]) return toast.error('Template image is required');
@@ -40,9 +41,12 @@ function CreateCardDesign({ create, setCreate, fetchCards }) {
                 Authorization: `${localStorage.getItem('authToken')}`
             }
         }).then(res => {
+            toast.dismiss()
             toast.success('Card design created successfully');
             fetchCards()
+            setCreate(false)
         }).catch(err => {
+            toast.dismiss()
             toast.error('Failed to create card design');
         })
         
