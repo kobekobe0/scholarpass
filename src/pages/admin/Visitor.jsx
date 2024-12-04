@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useCallback} from 'react'
 import useVisitorLogStore from '../../store/visitor.store';
 import debounce from '../../helper/debounce';
-import printTableData from '../../helper/print';
+import printTableData from '../../helper/printVisitor';
 
 function Visitor() {
     const { visitorLogs, fetchVisitorLogs, loading, error, total, page, totalPages } = useVisitorLogStore();
@@ -98,6 +98,7 @@ function Visitor() {
                                     <th className="px-4 py-3 text-sm font-medium text-gray-600">Person to Visit</th>
                                     <th className="px-4 py-3 text-sm font-medium text-gray-600">Contact Number</th>
                                     <th className="px-4 py-3 text-sm font-medium text-gray-600">Purpose</th>
+                                    <th className="px-4 py-3 text-sm font-medium text-gray-600">Guard on-duty</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -135,6 +136,7 @@ function Visitor() {
                                         <td className="px-4 py-3 text-gray-700">{log.personToVisit}</td>
                                         <td className="px-4 py-3 text-gray-700">{log.number}</td>
                                         <td className="px-4 py-3 text-gray-700">{log.purpose}</td>
+                                        <td className="px-4 py-3 text-gray-700">{log.guard ? log.guard : ''}</td>
                                     </tr>
                                 ))}
                             </tbody>

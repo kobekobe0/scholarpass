@@ -3,32 +3,25 @@ import logo from '../assets/logo.png';
 export const flattenData = (data) => {
     return data.map(item => {
         const flatItem = {
-            'studentID.name': item.studentID?.name || '',
-            'studentID.department': item.studentID?.department || '',
-            'logDate': formatDate(item.logDate),
+            'name': item.name || '',
+            'address': item.address || '',
+            'agency': item.agency || '',
+            'number': item.number || '',
+            'personToVisit': item.personToVisit || '',
+            'purpose': item.purpose || '',
             'timeIn': formatValue(item.timeIn),
             'timeOut': item.timeOut ? formatValue(item.timeOut) : '',
-            'vehicle.model': item.vehicle?.model || '',
             'guard': item.guard || '',
         };
         return flatItem;
     });
 };
 
-// Helper function to format date (logDate should only show the date, not the time)
-const formatDate = (value) => {
-    const date = new Date(value);
-    if (!isNaN(date.getTime())) {
-        return date.toLocaleDateString(); // Convert to a readable date format
-    }
-    return value || '';
-};
-
-// Helper function to format time values
+// Helper function to format date values
 const formatValue = (value) => {
     const date = new Date(value);
     if (!isNaN(date.getTime())) {
-        return date.toLocaleString(); // Convert to readable date-time format
+        return date.toLocaleString(); // Convert to a readable date-time format
     }
     return value || '';
 };
@@ -43,6 +36,7 @@ export const capitalizeHeaders = (headers) => {
 };
 
 export const printTableData = (data, documentType = "Visitor Report") => {
+    console.log(data);
     const flattenedData = flattenData(data);
 
     // Get all unique headers from the dataset

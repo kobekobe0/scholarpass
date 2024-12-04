@@ -91,6 +91,7 @@ function StudentLogs() {
                       <th className="px-4 py-3 text-sm font-medium text-gray-600">Time In</th>
                       <th className="px-4 py-3 text-sm font-medium text-gray-600">Time Out</th>
                       <th className="px-4 py-3 text-sm font-medium text-gray-600">Vehicle Model</th>
+                      <th className="px-4 py-3 text-sm font-medium text-gray-600">Guard on-duty</th>
                     </tr>
                   </thead>
                   {loading ? (
@@ -147,6 +148,9 @@ function StudentLogs() {
                             <td className="px-4 py-3 text-gray-700">{formattedTimeOut}</td>
                             <td className="px-4 py-3 text-gray-700">
                               {log.vehicle ? log.vehicle.model : "Walk-in"}
+                            </td>
+                            <td className="px-4 py-3 text-gray-700">
+                              {log.guard ? log.guard : ""}
                             </td>
                           </tr>
                         );
