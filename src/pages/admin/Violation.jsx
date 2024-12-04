@@ -2,7 +2,7 @@ import React,{useState, useEffect, useCallback} from 'react'
 import debounce from '../../helper/debounce'
 import useViolationStore from '../../store/violation.store'
 import { Link } from 'react-router-dom'
-import printTableData from '../../helper/print'
+import printTableData from '../../helper/printAllViolation'
 
 function Violation() {
     const [fromDate, setFromDate] = React.useState('')

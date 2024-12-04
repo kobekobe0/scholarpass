@@ -44,7 +44,7 @@ const CardDesignTable = ({ data }) => {
           <tr>
             <th className="w-1/5 px-4 py-3 text-sm font-medium text-gray-600">Image</th>
             <th className="w-1/5 px-4 py-3 text-sm font-medium text-gray-600">Name</th>
-            <th className="w-1/5 px-4 py-3 text-sm font-medium text-gray-600">Active</th>
+            <th className="w-1/5 px-4 py-3 text-sm font-medium text-gray-600">Type</th>
             <th className="w-1/5 px-4 py-3 text-sm font-medium text-gray-600">Created At</th>
             <th className="w-1/5 px-4 py-3 text-sm font-medium text-gray-600">Action</th>
           </tr>
@@ -57,19 +57,7 @@ const CardDesignTable = ({ data }) => {
               </td>
               <td className="w-1/5 px-4 py-3">{item.name}</td>
               <td className="w-1/5 px-4 py-3">
-                <Switch
-                  checked={item.active}
-                  onChange={() => handleToggleActive(item._id)}
-                  className={`${item.active ? 'bg-green-500' : 'bg-gray-300'}
-                    relative inline-flex h-6 w-11 items-center rounded-full`}
-                >
-                  <span className="sr-only">Toggle Active Status</span>
-                  <span
-                    className={`${
-                      item.active ? 'translate-x-6' : 'translate-x-1'
-                    } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-                  />
-                </Switch>
+              {item.type}
               </td>
               <td className="w-1/5 px-4 py-3">
                 {new Date(item.createdAt).toLocaleString('en-US', {

@@ -3,13 +3,13 @@ import API_URL from '../../../constants/api';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const PrintCards = ({ selectedCards, cardID }) => {
+const PrintCards = ({ selectedCards, cardID, onClose }) => {
 const downloadPDF = async () => {
     if(selectedCards.length === 0) return toast.error('Please select at least one card to print');
     if(selectedCards.length > 6) return toast.error('You can only print a maximum of 6 cards at a time');
-    if(!cardID) return toast.error('Please select a card design to print');
+    //if(!cardID) return toast.error('Please select a card design to print');
 
-
+    toast.loading('Printing cards');
     try {
         // Prepare the request body with selected card details
         const requestBody = {
@@ -44,8 +44,14 @@ const downloadPDF = async () => {
         // Clean up
         link.parentNode.removeChild(link);
         window.URL.revokeObjectURL(url);
+        toast.dismiss();
+        toast.success('Cards printed successfully');
+        onClose()
     } catch (error) {
         console.error('Error downloading PDF:', error);
+        toast.dismiss();
+        toast.error('Failed to print cards, please try again.');
+        onClose()
     }
 };
 

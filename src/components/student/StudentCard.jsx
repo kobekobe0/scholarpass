@@ -113,7 +113,7 @@ const StudentCard = () => {
                 <img src={selectedCard?.displayImage} className='xl:w-1/2 p-4' />
                 <div className=' xl:w-1/2 mt-4'>
                     <h2 className='text-3xl font-semibold mb-2'>{selectedCard?.name} <span className='text-sm font-normal'>{selectedCard?.material}</span></h2>
-                    <p className='mb-2 text-xs'>Select Card Design</p>
+                    <p className='mb-2 text-xs'>Available Card Designs</p>
                     <div className='grid grid-cols-6 gap-4 mb-4'>
                         {cards?.map((card) => (
                             <div key={card._id} onClick={() => setSelectedCard(card)} className="cursor-pointer border w-fit hover:border-gray-600 transition rounded">

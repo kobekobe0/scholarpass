@@ -6,6 +6,7 @@ import API_URL from '../../../constants/api';
 function CreateCardDesign({ create, setCreate, fetchCards }) {
     const [files, setFiles] = useState([null, null]); // State to store 2 files, one for index 0 and one for index 1
     const [name, setName] = useState(''); // State to store the name
+    const [type, setType] = useState(''); // State to store the type
 
     const handleFileChange = (e, index) => {
         const file = e.target.files[0];
@@ -19,6 +20,7 @@ function CreateCardDesign({ create, setCreate, fetchCards }) {
     const handleCreate = async () => {
         toast.loading("Creating card desgin")
         if(!name) return toast.error('Name is required');
+        if(!type) return toast.error('Type is required');
         if(!files[0]) return toast.error('Display image is required');
         if(!files[1]) return toast.error('Template image is required');
 
@@ -30,10 +32,12 @@ function CreateCardDesign({ create, setCreate, fetchCards }) {
         if(!files[0].type.includes('image')) return toast.error('Display image must be an image file');
         if(!files[1].type.includes('image')) return toast.error('Template image must be an image file');
 
+
         const formData = new FormData();
         formData.append('name', name);
         formData.append('images', files[0])
         formData.append('images', files[1])
+        formData.append('type', type)
 
         const res = await axios.post(`${API_URL}cards/create`, formData, {
             headers: {
@@ -47,7 +51,7 @@ function CreateCardDesign({ create, setCreate, fetchCards }) {
             setCreate(false)
         }).catch(err => {
             toast.dismiss()
-            toast.error('Failed to create card design');
+            toast.error(err.response.data.message || "Failed to create card design");
         })
         
         console.log({ name, files });
@@ -68,6 +72,20 @@ function CreateCardDesign({ create, setCreate, fetchCards }) {
                             className='border border-gray-300 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 rounded-md px-4 py-2 w-full outline-none transition'
                             placeholder='Enter name'
                         />
+                    </div>
+                    <div className='mb-6'>
+                        <label className='block text-gray-700 text-sm font-medium mb-2'>Card Type:</label>
+ 
+                        <select
+                            value={type}
+                            onChange={(e) => setType(e.target.value)}
+                            className='border border-gray-300 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 rounded-md px-4 py-2 w-full outline-none transition'
+                        >
+                            <option value=''>Select a card type</option>
+                            <option value='VISITOR'>Visitor</option>
+                            <option value='STUDENT'>Student</option>
+                            <option value='VEHICLE'>Vehicle</option>
+                        </select>
                     </div>
 
                     {/* Image Upload Inputs */}
